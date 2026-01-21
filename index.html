@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>umair.pk - YouTube Downloader</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f172a; color: white; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen items-center justify-center p-4">
+
+    <div class="max-w-xl w-full bg-slate-800 p-8 rounded-2xl shadow-2xl border border-slate-700">
+        <h1 class="text-4xl font-bold text-center text-red-500 mb-2">umair.pk</h1>
+        <p class="text-slate-400 text-center mb-8">Download YouTube Videos for Free</p>
+
+        <div class="space-y-4">
+            <input type="text" id="videoUrl" placeholder="Paste YouTube link here..." 
+            class="w-full p-4 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-red-500 transition">
+            
+            <button onclick="generateDownload()" 
+            class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-lg transition duration-300">
+                Get Download Links
+            </button>
+        </div>
+
+        <div id="resultArea" class="mt-8 text-center"></div>
+    </div>
+
+    <script>
+        function generateDownload() {
+            const url = document.getElementById('videoUrl').value;
+            const resultArea = document.getElementById('resultArea');
+            
+            if(!url) {
+                alert("Please enter a URL");
+                return;
+            }
+
+            resultArea.innerHTML = `<p class="mb-4">Click below to download:</p>
+            <iframe src="https://loader.to/api/button/?url=${url}&f=720" 
+            width="100%" height="100px" scrolling="no" style="border:none;"></iframe>`;
+        }
+    </script>
+</body>
+</html>
